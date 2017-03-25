@@ -1,11 +1,6 @@
 #!/bin/env groovy
 
 node {
-    stage ("Load CI Scripts") {
-        dir ("dlang/ci") {
-            git "https://github.com/dlang-test/ci.git"
-        }
-    }
-
-    load "dlang/ci/pipeline.groovy"
+    def base_branch = env.CHANGE_TARGET ?: env.BRANCH_NAME
+    echo base_branch
 }
